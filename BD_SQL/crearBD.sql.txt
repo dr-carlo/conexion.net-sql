@@ -1,0 +1,31 @@
+
+CREATE DATABASE Geriatrico_los_nonos
+go  -- CREACION DE LA BASE DE DATOS
+
+use Geriatrico_los_nonos
+
+CREATE TABLE PACIENTES(  -- CREACION DE LAS TABLAS
+	Documento int NOT NULL,
+	Nombre nvarchar(50),
+	Apellido nvarchar(50),
+	Fecha nvarchar(50),
+	ObraSocial nvarchar(50),
+	Foto nvarchar(50)
+CONSTRAINT PK_CLIENTE PRIMARY KEY CLUSTERED 
+(Documento ASC))
+
+CREATE TABLE VISITAS(
+Doc_paciente int NOT NULL,
+Nombre nvarchar(50),
+Parentezco nvarchar(50),
+Anfitrion nvarchar(50),
+Lugar nvarchar(50))
+
+CREATE TABLE PARAMETROS(
+	Anfitriones varchar(50),
+	Lugares varchar(50))
+
+ALTER TABLE VISITAS WITH CHECK ADD  CONSTRAINT FK_VISITAS_PACIENTES FOREIGN KEY(Doc_paciente)
+REFERENCES PACIENTES(Documento)
+ALTER TABLE VISITAS CHECK CONSTRAINT FK_VISITAS_PACIENTES
+
